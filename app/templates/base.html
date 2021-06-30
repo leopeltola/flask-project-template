@@ -4,13 +4,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Simple-flask-template</title>
+	{% if stylesheet %}
+	<link rel="stylesheet" href="{{ url_for('static', filename=stylesheet ) }}">
+	{% else %}
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css' ) }}">
+	{% endif %}
 </head>
 <body>
 	<header>
-		<h2><a href="/">Simple-flask-template</a></h2> 
+		<a href="{{ url_for('main.index') }}">Simple-flask-template</a> 
 		<nav>
-			<a href="/about">About</a>
+			<a href="{{ url_for('main.about') }}">About</a>
 		</nav>
 	</header>
 	{% block content %}{% endblock %}
